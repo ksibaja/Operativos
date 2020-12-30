@@ -1,0 +1,13 @@
+ul {
+    list-style: none;
+}
+
+ul li {
+    width: 30%;
+    float: none;
+    flex: auto;
+    text-align: center;
+    align-items: center;
+    border-right: 1px dotted #CCC;
+    padding: 2px;
+}

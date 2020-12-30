@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>RepoGames</title>
+    <link rel="shortcut icon" type="image/png"
+        href="https://cdn.pixabay.com/photo/2016/10/30/23/05/controller-1784573_960_720.png">
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/materialize.min.css') }}" type="text/css" rel="stylesheet"
+        media="screen,projection" />
+    <link href="{{ url_for('static',filename='css/style.css') }}" type="text/css" rel="stylesheet"
+        media="screen,projection" />
+
+    <!-- Load an icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body style="background-color: rgb(102, 13, 13);">
+    <!--NAVIGATION BAR-->
+    <nav class="black" role="navigation">
+        <div class="nav-wrapper container" style="width: 100%; margin-left: 2rem;">
+            <a id="logo-container" href="/" class="brand-logo"><i class="fa fa-fw fa-home"></i> {{ site_title }}</a>
+        </div>
+    </nav>
+
+    <!--CONTAINER-->
+    <div class="container" style="width: 100%; color: white;">
+        <!-- <h1 class="header center orange-text">{{ header }}</h1> -->
+        <!-- <p>Juegos</p> -->
+        <h1>{{ gameName }}</h1>
+        <img width="550" height="250"
+            src={{ game['steamUrlImage'] }} alt="Game">
+        <br>
+
+        <h5 style="margin: 0;"><a target="blank" href={{game['scoreUrl']}}>Score:</a> {{ game['Score'] }}</h5>
+        <hr>
+        <h5 style="margin: 0;"><a target="blank" href={{game['timeUrl']}}>Tiempo</a></h5>
+        <p style="margin: 0;">Tiempo completo: {{ game['fullTime'] }} horas</p>
+        <p style="margin: 0;">Tiempo promedio: {{ game['averTime'] }} horas</p>
+        <p style="margin: 0;">Tiempo + extras: {{ game['plusTime'] }} horas</p>
+        <hr>
+
+        <h5 style="margin: 0;"><a target="blank" href={{game['steamUrlGame']}}>Steam</a></h5>
+        <p style="margin: 0;">Precio: {{ game['steamPrice'] }}</p>
+        <p style="margin: 0;">Descuento: {{ game['steamDisc'] }}</p>
+        <div *ngIf="'{{steamD}}'=='Esta en Oferta'">
+            <h6 style="margin: 0; height: 20px; background-color: yellow; color: black;">{{steamD}}</h6>
+        </div>
+        
+        <hr>
+
+        <h5 style="margin: 0;"><a target="blank" href={{game['playUrlGame']}}>PlayStation</a></h5>
+        <p style="margin: 0;">Precio: {{ game['playPrice'] }}</p>
+        <p style="margin: 0;">Descuento: {{ game['playDisc'] }}</p>
+        <div *ngIf="'{{playD}}'=='Esta en Oferta'">   
+            <h6 style="margin: 0; height: 20px; background-color: yellow; color: black    ;">{{playD}}</h6>
+        </div>
+        
+        <br>
+
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <!--FOOTER-->
+    <footer class="page-footer black">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Kervin Sibaja</h5>
+
+                    <p class="grey-text text-lighten-4">Proyecto de Operativos, programación paralela</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+<footer>
+
+</footer>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>RepoGames</title>
+    <link rel="shortcut icon" type="image/png"
+        href="https://cdn.pixabay.com/photo/2016/10/30/23/05/controller-1784573_960_720.png">
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/materialize.min.css') }}" type="text/css" rel="stylesheet"
+        media="screen,projection" />
+    <link href="{{ url_for('static',filename='css/style.css') }}" type="text/css" rel="stylesheet"
+        media="screen,projection" />
+
+    <!-- Load an icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body style="background-color: rgb(102, 13, 13);">
+    <!--NAVIGATION BAR-->
+    <nav class="black" role="navigation">
+        <div class="nav-wrapper container" style="width: 100%; margin-left: 2rem;"><a id="logo-container" href=""
+                class="brand-logo"><i class="fa fa-fw fa-home"></i> {{ site_title }}</a>
+        </div>
+    </nav>
+
+    <!--CONTAINER-->
+    <div class="container" style="width: 100%;">
+        <h1 class="header center white-text">{{ header }}</h1>
+        <!-- <p>Juegos</p> -->
+
+    </div>
+    <div style="width: 100%; display: flex; justify-content: center;">
+        <div class="row" style="display: flex; justify-content: center;">
+            <ul style="display: flex; justify-content: center; display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;">
+
+                {% for game in gameList %}
+                <li style="width: 15%; max-width: 15%; min-width: 250px; margin: 15px; border: none;">
+                    <div class="card black" style="box-shadow: 0 4px 8px 0 rgba(8, 8, 8, 0.2);
+                        max-width: 250px;
+                        margin: auto;
+                        text-align: center;
+                        color: white">
+
+                        <img width="245" height="120" src={{game['steamUrlImage']}} alt="Game">
+
+                        <span class="card-title">{{game['Name']}}</span>
+
+                        <p style="margin: 0;">Score: {{game['Score']}}</p>
+                        <hr>
+
+                        <h6 style="margin: 0;">Steam</h6>
+                        <p style="margin: 0;">Precio: {{game['steamPrice']}}</p>
+                        <p style="margin: 0;">Descuento: {{game['steamDisc']}}</p>
+                        <hr>
+
+                        <h6 style="margin: 0;">PlayStation</h6>
+                        <p style="margin: 0;">Precio: {{game['playPrice']}}</p>
+                        <p style="margin: 0;">Descuento: {{game['playDisc']}}</p>
+                        <div></div>
+
+                        <form action="http://127.0.0.1:5000/gamed#" method="post">
+                            <p style="margin: 0; max-height: 1px;"><input style="margin: 0; max-height: 10px;" type = "text" name = "name" value="{{game['Name']}}"/></p>
+                            <p><input type = "submit" value = "Ver Juego" style="outline: 0;
+                                display: inline-block;
+                                padding: 8px;
+                                color: black;
+                                background-color: white;
+                                text-align: center;
+                                cursor: pointer;
+                                width: 100%;
+                                opacity: 0.8;
+                                font-size: 18px;"/></p>
+                            
+                        </form>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <!--FOOTER-->
+    <footer class="page-footer black">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Kervin Sibaja</h5>
+
+                    <p class="grey-text text-lighten-4">Proyecto de Operativos, programación paralela</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
